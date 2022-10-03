@@ -4,4 +4,4 @@ Projeto Flutter
 
 ## Getting Started
 
-App Show
+App Shop
