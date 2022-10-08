@@ -11,13 +11,40 @@ class ProductDetailPage extends StatelessWidget {
     final Product product =
         ModalRoute.of(context)!.settings.arguments as Product;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(product.name),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(''),
-      ),
-    );
+        appBar: AppBar(
+          title: Text(product.name),
+          centerTitle: true,
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: 300,
+                width: double.infinity,
+                child: Image.network(
+                  product.imageUrl,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                'R\$${product.price}',
+                style: TextStyle(
+                  color: Colors.grey.shade500,
+                  fontSize: 20,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                width: double.infinity,
+                child: Text(
+                  product.description,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }
