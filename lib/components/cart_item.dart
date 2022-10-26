@@ -14,6 +14,7 @@ class CartItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final totalPrice = cartItem.price * cartItem.quantity;
     return Dismissible(
       key: ValueKey(cartItem.id),
       direction: DismissDirection.endToStart,
@@ -28,8 +29,38 @@ class CartItemWidget extends StatelessWidget {
         child: const Icon(
           Icons.delete,
           size: 40,
+          color: Colors.white,
         ),
       ),
+      confirmDismiss: (_) {
+        return showDialog(
+          context: context,
+          builder: (ctx) => AlertDialog(
+            title: const Text('Tem Certeza?'),
+            content: Text('Quer remover o item ${cartItem.name}?'),
+            actions: [
+              TextButton(
+                child: const Text('Não'),
+                onPressed: () {
+                  Navigator.of(ctx).pop();
+                },
+              ),
+              TextButton(
+                child: Text(
+                  'Sim',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.error,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.of(ctx).pop(true);
+                },
+              ),
+            ],
+          ),
+        );
+      },
       onDismissed: (_) {
         Provider.of<Cart>(
           context,
@@ -48,7 +79,7 @@ class CartItemWidget extends StatelessWidget {
               padding: const EdgeInsets.all(3),
               child: FittedBox(
                 child: Text(
-                  '${cartItem.price}',
+                  cartItem.price.toStringAsFixed(2),
                   style: const TextStyle(
                     color: Colors.white,
                   ),
@@ -57,7 +88,7 @@ class CartItemWidget extends StatelessWidget {
             ),
           ),
           title: Text(cartItem.name),
-          subtitle: Text('Total: R\$${cartItem.price * cartItem.quantity}'),
+          subtitle: Text('Total: R\$${totalPrice.toStringAsFixed(2)}'),
           trailing: Text('${cartItem.quantity}X'),
         ),
       ),

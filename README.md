@@ -1,7 +1,7 @@
 # shop
 
-Projeto Flutter - App de loja
+Projeto Flutter - App Shop
 
 ## Getting Started
 
-App desenvolvido focado em aprender gerência de estados utilizando providers.
+App desenvolvido focado na gerência de estados utilizando providers.

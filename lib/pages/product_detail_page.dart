@@ -18,7 +18,7 @@ class ProductDetailPage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 height: 300,
                 width: double.infinity,
                 child: Image.network(
@@ -28,7 +28,7 @@ class ProductDetailPage extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                'R\$${product.price}',
+                'R\$${product.price.toStringAsFixed(2)}',
                 style: TextStyle(
                   color: Colors.grey.shade500,
                   fontSize: 20,
