@@ -12,6 +12,7 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Cart cart = Provider.of(context);
     final items = cart.items.values.toList();
+    final snackBar = ScaffoldMessenger.of(context);
 
     return Scaffold(
         appBar: AppBar(
@@ -52,36 +53,7 @@ class CartPage extends StatelessWidget {
                             ),
                           ),
                           const Spacer(),
-                          TextButton(
-                            onPressed: () {
-                              Provider.of<OrderList>(
-                                context,
-                                listen: false,
-                              ).addOrder(cart);
-
-                              cart.clear();
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  duration: const Duration(seconds: 3),
-                                  backgroundColor:
-                                      Theme.of(context).colorScheme.primary,
-                                  content: const Text(
-                                    'Compra efetuada com sucesso!',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                            style: TextButton.styleFrom(
-                              textStyle: TextStyle(
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                            ),
-                            child: const Text('COMPRAR'),
-                          ),
+                          CartButton(cart: cart, snackBar: snackBar),
                         ],
                       ),
                     ),
@@ -104,5 +76,61 @@ class CartPage extends StatelessWidget {
                   ),
                 ),
               ));
+  }
+}
+
+class CartButton extends StatefulWidget {
+  const CartButton({
+    Key? key,
+    required this.cart,
+    required this.snackBar,
+  }) : super(key: key);
+
+  final Cart cart;
+  final ScaffoldMessengerState snackBar;
+
+  @override
+  State<CartButton> createState() => _CartButtonState();
+}
+
+class _CartButtonState extends State<CartButton> {
+  bool _isLoading = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return _isLoading
+        ? const CircularProgressIndicator()
+        : TextButton(
+            onPressed: () async {
+              setState(() => _isLoading = true);
+              await Provider.of<OrderList>(
+                context,
+                listen: false,
+              ).addOrder(widget.cart);
+
+              widget.cart.clear();
+              setState(() => _isLoading = false);
+
+              widget.snackBar.showSnackBar(
+                SnackBar(
+                  duration: const Duration(seconds: 3),
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  content: const Text(
+                    'Compra efetuada com sucesso!',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              );
+            },
+            style: TextButton.styleFrom(
+              textStyle: TextStyle(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+            child: const Text('COMPRAR'),
+          );
   }
 }
