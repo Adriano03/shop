@@ -10,3 +10,9 @@ Aplicativo Shop desenvolvido na aula (Flutter | Dart) da Udemy!
 - Cadastro, edição, exclusão e visualização de dados utilizando a memória;
 - Requisição http com o banco de dados Firebase;
 - Incluir o CRUD no banco de dados e tratamentos de possíveis erros;
+- Autenticação com o firebase, Signup e Signin;
+- Implementação de dados por usuário, cada usuário tem suas respectivas compras e produtos favoritos;
+- Expiração do token do usuário, que depois de 1 hora é deslogado automaticamente;
+- Login automático utilizando o shared_preferences;
+
+

@@ -190,7 +190,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                       decoration: const InputDecoration(labelText: 'Descrição'),
                       focusNode: _descriptionFocus,
                       keyboardType: TextInputType.multiline,
-                      textCapitalization: TextCapitalization.words,
+                      textCapitalization: TextCapitalization.sentences,
                       maxLines: 3,
                       onSaved: (description) =>
                           _formData['description'] = description ?? '',
