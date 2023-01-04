@@ -15,4 +15,4 @@ Aplicativo Shop desenvolvido na aula (Flutter | Dart) da Udemy!
 - Expiração do token do usuário, que depois de 1 hora é “deslogado” automaticamente;
 - Login automático utilizando o shared_preferences;
 - Animação no carregamento de imagens, especificando uma imagem padrão até a imagem da web ser totalmente carregada;
-- Animação de tela para detalhes do produto utilizando Hero e para as demais delas utilizado de forma global o FadeTransition;
+- Animação de tela para detalhes do produto utilizando Hero e para as demais telas utilizado de forma global o FadeTransition;
