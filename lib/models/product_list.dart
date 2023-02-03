@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_final_fields
+
 import 'dart:convert';
 import 'dart:math';
 
@@ -5,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shop/exceptions/http_exception.dart';
 import 'package:shop/models/product.dart';
-import 'package:shop/utils/constants.dart';
+import 'package:shop/utils/constants_url.dart';
 
 class ProductList extends ChangeNotifier {
   final String _token;

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop/components/cart_item.dart';
@@ -47,7 +49,7 @@ class CartPage extends StatelessWidget {
                               style: TextStyle(
                                 color: Theme.of(context)
                                     .primaryTextTheme
-                                    .headline6
+                                    .titleLarge
                                     ?.color,
                               ),
                             ),

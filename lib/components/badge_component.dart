@@ -1,12 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-class Badge extends StatelessWidget {
+class BadgeComponent extends StatelessWidget {
   final Widget child;
   final String value;
   final Color? color;
 
-  const Badge({
+  const BadgeComponent({
     Key? key,
     required this.child,
     required this.value,

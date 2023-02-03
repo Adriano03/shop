@@ -5,8 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:shop/models/cart.dart';
 import 'package:shop/models/cart_item.dart';
 import 'package:shop/models/order.dart';
+import 'package:shop/utils/constants_url.dart';
 
-import '../utils/constants.dart';
 
 class OrderList with ChangeNotifier {
   final String _token;
